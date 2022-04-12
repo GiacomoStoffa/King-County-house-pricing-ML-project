@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="gisto">
+    <Application name="KNIME" version="4.5.0"/>
+  </Header>
+  <DataDictionary numberOfFields="15">
+    <DataField name="price" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-1.2943679627186095" rightMargin="14.064953523398163"/>
+    </DataField>
+    <DataField name="n_bedrooms" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-2.6265762718022856" rightMargin="8.43294109947679"/>
+    </DataField>
+    <DataField name="n_bathroom" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-2.120695356203906" rightMargin="7.686481178203302"/>
+    </DataField>
+    <DataField name="sqft_living" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-1.870877869674862" rightMargin="12.48668393231304"/>
+    </DataField>
+    <DataField name="sqft_lot" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-0.3757455440274182" rightMargin="30.392460313744554"/>
+    </DataField>
+    <DataField name="n_floors" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-0.9265880570692" rightMargin="3.723582445330015"/>
+    </DataField>
+    <DataField name="waterfront_dummy" optype="continuous" dataType="boolean">
+      <Value value="false"/>
+      <Value value="true"/>
+    </DataField>
+    <DataField name="view" optype="categorical" dataType="string">
+      <Value value="poor"/>
+      <Value value=" verygood"/>
+      <Value value=" average"/>
+      <Value value=" fair"/>
+      <Value value=" good"/>
+    </DataField>
+    <DataField name="condition" optype="categorical" dataType="string">
+      <Value value=" average"/>
+      <Value value=" good"/>
+      <Value value=" very good"/>
+      <Value value=" fair"/>
+      <Value value=" poor"/>
+    </DataField>
+    <DataField name="grade" optype="categorical" dataType="string">
+      <Value value="low"/>
+      <Value value="medium"/>
+      <Value value="high"/>
+    </DataField>
+    <DataField name="lat" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="47.1559" rightMargin="47.7776"/>
+    </DataField>
+    <DataField name="long" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="-122.519" rightMargin="-121.315"/>
+    </DataField>
+    <DataField name="Centre_dummy" optype="continuous" dataType="boolean">
+      <Value value="true"/>
+      <Value value="false"/>
+    </DataField>
+    <DataField name="basement_dummy" optype="continuous" dataType="boolean">
+      <Value value="true"/>
+      <Value value="false"/>
+    </DataField>
+    <DataField name="restoration_dummy" optype="continuous" dataType="boolean">
+      <Value value="false"/>
+      <Value value="true"/>
+    </DataField>
+  </DataDictionary>
+  <ClusteringModel modelName="k-means" functionName="clustering" modelClass="centerBased" numberOfClusters="5">
+    <MiningSchema>
+      <MiningField name="price" invalidValueTreatment="asIs"/>
+      <MiningField name="n_bedrooms" invalidValueTreatment="asIs"/>
+      <MiningField name="n_bathroom" invalidValueTreatment="asIs"/>
+      <MiningField name="sqft_living" invalidValueTreatment="asIs"/>
+      <MiningField name="sqft_lot" invalidValueTreatment="asIs"/>
+      <MiningField name="n_floors" invalidValueTreatment="asIs"/>
+      <MiningField name="waterfront_dummy" invalidValueTreatment="asIs"/>
+      <MiningField name="lat" invalidValueTreatment="asIs"/>
+      <MiningField name="long" invalidValueTreatment="asIs"/>
+      <MiningField name="Centre_dummy" invalidValueTreatment="asIs"/>
+      <MiningField name="basement_dummy" invalidValueTreatment="asIs"/>
+      <MiningField name="restoration_dummy" invalidValueTreatment="asIs"/>
+    </MiningSchema>
+    <ComparisonMeasure kind="distance">
+      <squaredEuclidean/>
+    </ComparisonMeasure>
+    <ClusteringField field="price" compareFunction="absDiff"/>
+    <ClusteringField field="n_bedrooms" compareFunction="absDiff"/>
+    <ClusteringField field="n_bathroom" compareFunction="absDiff"/>
+    <ClusteringField field="sqft_living" compareFunction="absDiff"/>
+    <ClusteringField field="sqft_lot" compareFunction="absDiff"/>
+    <ClusteringField field="n_floors" compareFunction="absDiff"/>
+    <ClusteringField field="waterfront_dummy" compareFunction="absDiff"/>
+    <ClusteringField field="lat" compareFunction="absDiff"/>
+    <ClusteringField field="long" compareFunction="absDiff"/>
+    <ClusteringField field="Centre_dummy" compareFunction="absDiff"/>
+    <ClusteringField field="basement_dummy" compareFunction="absDiff"/>
+    <ClusteringField field="restoration_dummy" compareFunction="absDiff"/>
+    <Cluster name="cluster_0" size="4378">
+      <Array n="12" type="real">-0.09211571811212582 0.07287559273604996 0.46483300286708357 0.12614020702879103 -0.1504899787308304 1.0809090305357392 0.0031978072179077205 47.544009913202295 -122.1747430333484 0.2613065326633166 0.17222476016445865 0.031064412973960714 </Array>
+    </Cluster>
+    <Cluster name="cluster_1" size="3403">
+      <Array n="12" type="real">-0.06335621811440093 0.4858832599267821 0.06649041454136473 0.10350516072222658 -0.05483625331357826 -0.7885724177091517 0.0047017337643255955 47.57374763444017 -122.23685101381128 0.3247134880987364 0.809285924184543 0.043784895680282106 </Array>
+    </Cluster>
+    <Cluster name="cluster_2" size="1505">
+      <Array n="12" type="real">1.8822229574949396 1.0704623923110195 1.4922120036365094 1.8596550514193113 0.07089449290474145 0.7536529523691381 0.03787375415282392 47.60590378737545 -122.18592292358802 0.28106312292358804 0.5574750830564784 0.09368770764119601 </Array>
+    </Cluster>
+    <Cluster name="cluster_3" size="215">
+      <Array n="12" type="real">0.3673661577214067 0.09972335925720716 0.5492894491323824 0.9436362557573651 6.4789797593025344 0.2154073035200024 0.004651162790697674 47.485960930232544 -122.0168186046512 0.0 0.2558139534883721 0.03255813953488372 </Array>
+    </Cluster>
+    <Cluster name="cluster_4" size="4533">
+      <Array n="12" type="real">-0.5058119238477431 -0.7952782927856248 -1.0203357741612824 -0.8617102439187153 -0.1443247216329115 -0.7123909247284034 0.0026472534745201853 47.55281431722911 -122.25001323626698 0.4513567174056916 0.2536951246415178 0.04015001103022281 </Array>
+    </Cluster>
+  </ClusteringModel>
+</PMML>
